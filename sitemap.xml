@@ -3,12 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://dongpo.li/mac/</loc>
-    <lastmod>2019-08-02T11:17:37+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://dongpo.li/mac/mysql/</loc>
+    <loc>http://dongpo.li/%E6%9D%82%E8%AE%B0/mysql/</loc>
     <lastmod>2019-08-02T11:17:37+08:00</lastmod>
   </url>
   
@@ -18,7 +13,17 @@
   </url>
   
   <url>
+    <loc>http://dongpo.li/%E6%9D%82%E8%AE%B0/</loc>
+    <lastmod>2019-08-02T11:17:37+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://dongpo.li/mac/keyboard-shortcuts/</loc>
+    <lastmod>2019-06-19T13:42:29+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dongpo.li/mac/</loc>
     <lastmod>2019-06-19T13:42:29+08:00</lastmod>
   </url>
   
@@ -54,10 +59,6 @@
   
   <url>
     <loc>http://dongpo.li/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>http://dongpo.li/search/</loc>
   </url>
   
 </urlset>
