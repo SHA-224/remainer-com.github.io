@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jvms on SHA-1</title>
+    <link>http://dongpo.li/jvm/</link>
+    <description>Recent content in Jvms on SHA-1</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 13 Jan 2020 20:42:54 +0800</lastBuildDate>
+    
+	<atom:link href="http://dongpo.li/jvm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JVM默认参数</title>
+      <link>http://dongpo.li/jvm/args/</link>
+      <pubDate>Mon, 13 Jan 2020 20:42:54 +0800</pubDate>
+      
+      <guid>http://dongpo.li/jvm/args/</guid>
+      <description>&lt;p&gt;JVM的大部分的参数都指定了默认值,本文来了解这些参数列表和一些参数默认值.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

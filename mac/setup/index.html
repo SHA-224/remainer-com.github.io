@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.59.1" />
+    <meta name="generator" content="Hugo 0.62.2" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -79,75 +79,41 @@
                         
                         <div class="post-content">
                             <h1 id="安装软件">安装软件</h1>
-
 <h2 id="brew">brew</h2>
-
-<p>Mac必装，没啥好说的，安装教程参见<a href="https://brew.sh">官网</a><br />
-安装完成之后需要安装brew-cask，用来装一些非开源的软件。<br />
+<p>Mac必装，没啥好说的，安装教程参见<a href="https://brew.sh">官网</a><br>
+安装完成之后需要安装brew-cask，用来装一些非开源的软件。<br>
 执行命令</p>
-
 <pre><code>brew install brew-cask-completion
-</code></pre>
-
-<p>Cask安装指定版本需要安装一个tap，否则无法制定安装的Java版本</p>
-
-<pre><code class="language-shell">brew tap caskroom/versions
-</code></pre>
-
-<h2 id="安装git">安装git</h2>
-
+</code></pre><p>Cask安装指定版本需要安装一个tap，否则无法制定安装的Java版本</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">brew tap caskroom/versions
+</code></pre></div><h2 id="安装git">安装git</h2>
 <p>安装命令</p>
-
-<pre><code class="language-shell">brew install git
-</code></pre>
-
-<h2 id="安装iterm2">安装iterm2</h2>
-
-<p>Mac自带的终端模拟器和之前的一些使用习惯不太一样，好多快捷键不支持<br />
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">brew install git
+</code></pre></div><h2 id="安装iterm2">安装iterm2</h2>
+<p>Mac自带的终端模拟器和之前的一些使用习惯不太一样，好多快捷键不支持<br>
 安装命令</p>
-
-<pre><code class="language-shell">brew cask install iterm2
-</code></pre>
-
-<h2 id="java">Java</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">brew cask install iterm2
+</code></pre></div><h2 id="java">Java</h2>
 <p>安装命令</p>
-
-<pre><code class="language-shell">brew cask install java8
-</code></pre>
-
-<p><del>开发用Java8，本来是要装Java11的，但是装完之后发现没有@Resource注解编译失败，原因暂时未知，时间有限，暂不深究</del></p>
-
+<pre><code class="language- shell" data-lang=" shell">brew cask install java8
+</code></pre><p><del>开发用Java8，本来是要装Java11的，但是装完之后发现没有@Resource注解编译失败，原因暂时未知，时间有限，暂不深究</del></p>
 <p>Java11开始彻底移除了Javaee,所以一些包已经无法使用了,如@Resource注解</p>
-
 <p>附Java12安装方式(安装最新版的OracleJDK,install java目前安装的OpenJDK)</p>
-
-<pre><code class="language-shell">brew cask install oracle-jdk
-</code></pre>
-
-<h2 id="idea">Idea</h2>
-
-<p>Java开发神器，穷人家的孩子安装社区版<br />
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">brew cask install oracle-jdk
+</code></pre></div><h2 id="idea">Idea</h2>
+<p>Java开发神器，穷人家的孩子安装社区版<br>
 安装命令</p>
-
-<pre><code class="language-shell">brew cask install intellij-idea-ce
-</code></pre>
-
-<h2 id="其他软件">其他软件</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">brew cask install intellij-idea-ce
+</code></pre></div><h2 id="其他软件">其他软件</h2>
 <p>首次配置环境需要安装的软件还是挺多的，不一一列了，软件名就见下边吧，非Cask就执行<code>brew install 软件名</code>，Cask软件就执行<code>brew cask install 软件名</code>。</p>
-
 <h3 id="非cask">非Cask</h3>
-
 <ul>
 <li>openconnect 没找到AnyConnect，装openconnect代替</li>
 <li>redis</li>
 <li>tree</li>
 <li>hugo</li>
 </ul>
-
 <h3 id="其他cask软件">其他Cask软件</h3>
-
 <ul>
 <li>visual-studio-code 文本编辑器</li>
 <li>intellij-idea-ce</li>
@@ -222,7 +188,7 @@
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2019 <a href="http://dongpo.li/">SHA-1 By </a>.
+        &copy; 2020 <a href="http://dongpo.li/">SHA-1 By </a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
         

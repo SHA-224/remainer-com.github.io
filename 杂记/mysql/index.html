@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.59.1" />
+    <meta name="generator" content="Hugo 0.62.2" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -79,29 +79,24 @@
                         
                         <div class="post-content">
                             <h1 id="mysql语句收藏">MySQL语句收藏</h1>
-
 <h2 id="查询数据库占用磁盘空间">查询数据库占用磁盘空间</h2>
-
-<pre><code class="language-sql">select 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> 
 TABLE_SCHEMA, 
-concat(truncate(sum(data_length)/1024/1024,2),' MB') as data_size,
-concat(truncate(sum(index_length)/1024/1024,2),'MB') as index_size
-from information_schema.tables
-group by TABLE_SCHEMA
-ORDER BY data_size desc;
-</code></pre>
-
-<h2 id="查询表占用空间">查询表占用空间</h2>
-
-<pre><code class="language-sql">select 
-TABLE_NAME, 
-concat(truncate(data_length/1024/1024,2),' MB') as data_size,
-concat(truncate(index_length/1024/1024,2),' MB') as index_size
-from information_schema.tables 
-where TABLE_SCHEMA = 'mysql'
-group by TABLE_NAME
-order by data_length desc;
-</code></pre>
+concat(<span style="color:#66d9ef">truncate</span>(<span style="color:#66d9ef">sum</span>(data_length)<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>,<span style="color:#ae81ff">2</span>),<span style="color:#e6db74">&#39;</span><span style="color:#e6db74"> MB</span><span style="color:#e6db74">&#39;</span>) <span style="color:#66d9ef">as</span> data_size,
+concat(<span style="color:#66d9ef">truncate</span>(<span style="color:#66d9ef">sum</span>(index_length)<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>,<span style="color:#ae81ff">2</span>),<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">MB</span><span style="color:#e6db74">&#39;</span>) <span style="color:#66d9ef">as</span> index_size
+<span style="color:#66d9ef">from</span> information_schema.tables
+<span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> TABLE_SCHEMA
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> data_size <span style="color:#66d9ef">desc</span>;
+</code></pre></div><h2 id="查询表占用空间">查询表占用空间</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> 
+<span style="color:#66d9ef">TABLE_NAME</span>, 
+concat(<span style="color:#66d9ef">truncate</span>(data_length<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>,<span style="color:#ae81ff">2</span>),<span style="color:#e6db74">&#39;</span><span style="color:#e6db74"> MB</span><span style="color:#e6db74">&#39;</span>) <span style="color:#66d9ef">as</span> data_size,
+concat(<span style="color:#66d9ef">truncate</span>(index_length<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>,<span style="color:#ae81ff">2</span>),<span style="color:#e6db74">&#39;</span><span style="color:#e6db74"> MB</span><span style="color:#e6db74">&#39;</span>) <span style="color:#66d9ef">as</span> index_size
+<span style="color:#66d9ef">from</span> information_schema.tables 
+<span style="color:#66d9ef">where</span> TABLE_SCHEMA <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">mysql</span><span style="color:#e6db74">&#39;</span>
+<span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> <span style="color:#66d9ef">TABLE_NAME</span>
+<span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> data_length <span style="color:#66d9ef">desc</span>;
+</code></pre></div>
                         </div>
 
                         
@@ -167,7 +162,7 @@ order by data_length desc;
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2019 <a href="http://dongpo.li/">SHA-1 By </a>.
+        &copy; 2020 <a href="http://dongpo.li/">SHA-1 By </a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
         

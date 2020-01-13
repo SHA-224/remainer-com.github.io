@@ -3,12 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://dongpo.li/%E6%9D%82%E8%AE%B0/mysql/</loc>
-    <lastmod>2019-08-02T11:17:37+08:00</lastmod>
+    <loc>http://dongpo.li/jvm/</loc>
+    <lastmod>2020-01-13T20:42:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dongpo.li/jvm/args/</loc>
+    <lastmod>2020-01-13T20:42:54+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://dongpo.li/</loc>
+    <lastmod>2020-01-13T20:42:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dongpo.li/%E6%9D%82%E8%AE%B0/mysql/</loc>
     <lastmod>2019-08-02T11:17:37+08:00</lastmod>
   </url>
   
