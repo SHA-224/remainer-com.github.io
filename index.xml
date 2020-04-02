@@ -6,7 +6,7 @@
     <description>Recent content on SHA-1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 13 Jan 2020 20:42:54 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 19 Dec 2018 15:03:32 +0800</lastBuildDate>
     
 	<atom:link href="http://dongpo.li/index.xml" rel="self" type="application/rss+xml" />
     
@@ -53,7 +53,18 @@
       <pubDate>Wed, 19 Dec 2018 15:03:32 +0800</pubDate>
       
       <guid>http://dongpo.li/about/</guid>
-      <description>&lt;p&gt;少壮不努力,老大做IT!&lt;/p&gt;</description>
+      <description>&lt;style&gt;
+table thead {
+    display: none;
+}
+table td {
+    width: 25%;
+}
+.post-content h2 {
+    color: #444444
+}
+&lt;/style&gt;
+&lt;p&gt;找工作了,简历附上&lt;/p&gt;</description>
     </item>
     
     <item>

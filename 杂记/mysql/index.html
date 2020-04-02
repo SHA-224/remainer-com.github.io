@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.62.2" />
+    <meta name="generator" content="Hugo 0.68.3" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -82,18 +82,18 @@
 <h2 id="查询数据库占用磁盘空间">查询数据库占用磁盘空间</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> 
 TABLE_SCHEMA, 
-concat(<span style="color:#66d9ef">truncate</span>(<span style="color:#66d9ef">sum</span>(data_length)<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>,<span style="color:#ae81ff">2</span>),<span style="color:#e6db74">&#39;</span><span style="color:#e6db74"> MB</span><span style="color:#e6db74">&#39;</span>) <span style="color:#66d9ef">as</span> data_size,
-concat(<span style="color:#66d9ef">truncate</span>(<span style="color:#66d9ef">sum</span>(index_length)<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>,<span style="color:#ae81ff">2</span>),<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">MB</span><span style="color:#e6db74">&#39;</span>) <span style="color:#66d9ef">as</span> index_size
+concat(<span style="color:#66d9ef">truncate</span>(<span style="color:#66d9ef">sum</span>(data_length)<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>,<span style="color:#ae81ff">2</span>),<span style="color:#e6db74">&#39; MB&#39;</span>) <span style="color:#66d9ef">as</span> data_size,
+concat(<span style="color:#66d9ef">truncate</span>(<span style="color:#66d9ef">sum</span>(index_length)<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>,<span style="color:#ae81ff">2</span>),<span style="color:#e6db74">&#39;MB&#39;</span>) <span style="color:#66d9ef">as</span> index_size
 <span style="color:#66d9ef">from</span> information_schema.tables
 <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> TABLE_SCHEMA
 <span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> data_size <span style="color:#66d9ef">desc</span>;
 </code></pre></div><h2 id="查询表占用空间">查询表占用空间</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> 
 <span style="color:#66d9ef">TABLE_NAME</span>, 
-concat(<span style="color:#66d9ef">truncate</span>(data_length<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>,<span style="color:#ae81ff">2</span>),<span style="color:#e6db74">&#39;</span><span style="color:#e6db74"> MB</span><span style="color:#e6db74">&#39;</span>) <span style="color:#66d9ef">as</span> data_size,
-concat(<span style="color:#66d9ef">truncate</span>(index_length<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>,<span style="color:#ae81ff">2</span>),<span style="color:#e6db74">&#39;</span><span style="color:#e6db74"> MB</span><span style="color:#e6db74">&#39;</span>) <span style="color:#66d9ef">as</span> index_size
+concat(<span style="color:#66d9ef">truncate</span>(data_length<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>,<span style="color:#ae81ff">2</span>),<span style="color:#e6db74">&#39; MB&#39;</span>) <span style="color:#66d9ef">as</span> data_size,
+concat(<span style="color:#66d9ef">truncate</span>(index_length<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>,<span style="color:#ae81ff">2</span>),<span style="color:#e6db74">&#39; MB&#39;</span>) <span style="color:#66d9ef">as</span> index_size
 <span style="color:#66d9ef">from</span> information_schema.tables 
-<span style="color:#66d9ef">where</span> TABLE_SCHEMA <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">mysql</span><span style="color:#e6db74">&#39;</span>
+<span style="color:#66d9ef">where</span> TABLE_SCHEMA <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;mysql&#39;</span>
 <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> <span style="color:#66d9ef">TABLE_NAME</span>
 <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> data_length <span style="color:#66d9ef">desc</span>;
 </code></pre></div>
