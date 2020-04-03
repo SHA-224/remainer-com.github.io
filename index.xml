@@ -6,10 +6,33 @@
     <description>Recent content on SHA-1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 19 Dec 2018 15:03:32 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 02 Apr 2020 15:03:32 +0800</lastBuildDate>
     
 	<atom:link href="http://dongpo.li/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>关于我</title>
+      <link>http://dongpo.li/about/</link>
+      <pubDate>Thu, 02 Apr 2020 15:03:32 +0800</pubDate>
+      
+      <guid>http://dongpo.li/about/</guid>
+      <description>&lt;style&gt;
+table thead,
+footer,
+.post-meta.meta-tags {
+    display: none;
+}
+table td {
+    width: 25%;
+}
+.post-content h2,
+.post-content h3 {
+    color: #444444
+}
+&lt;/style&gt;
+&lt;p&gt;找工作了,简历附上&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>JVM默认参数</title>
@@ -45,27 +68,6 @@
       
       <guid>http://dongpo.li/mac/setup/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>关于我</title>
-      <link>http://dongpo.li/about/</link>
-      <pubDate>Wed, 19 Dec 2018 15:03:32 +0800</pubDate>
-      
-      <guid>http://dongpo.li/about/</guid>
-      <description>&lt;style&gt;
-table thead, footer {
-    display: none;
-}
-table td {
-    width: 25%;
-}
-.post-content h2,
-.post-content h3 {
-    color: #444444
-}
-&lt;/style&gt;
-&lt;p&gt;找工作了,简历附上&lt;/p&gt;</description>
     </item>
     
     <item>
