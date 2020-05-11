@@ -31,6 +31,13 @@ table td {
 .post-content h4 {
     color: #444444
 }
+#main {
+    width: 100%;
+}
+#secondary {
+    dispaly: none;
+}
+
 &lt;/style&gt;
 &lt;p&gt;找工作了,简历附上&lt;/p&gt;</description>
     </item>
