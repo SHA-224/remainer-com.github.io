@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>手把手搭建一个静态博客</title>
+      <link>http://dongpo.li/%E6%9D%82%E8%AE%B0/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Wed, 13 May 2020 11:17:37 +0800</pubDate>
+      
+      <guid>http://dongpo.li/%E6%9D%82%E8%AE%B0/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>&lt;p&gt;使用Hugo和Github搭建一个静态博客&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>关于我</title>
       <link>http://dongpo.li/about/</link>
       <pubDate>Thu, 02 Apr 2020 15:03:32 +0800</pubDate>
