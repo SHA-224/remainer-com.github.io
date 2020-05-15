@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>0、先达成一些共识</title>
+      <link>http://dongpo.li/dubbo/0/</link>
+      <pubDate>Fri, 15 May 2020 16:01:37 +0800</pubDate>
+      
+      <guid>http://dongpo.li/dubbo/0/</guid>
+      <description>&lt;p&gt;所有零基础xxx都是瞎扯淡,不服有本事找个不识字的来(我就是杠精..).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>搭建一个静态博客</title>
       <link>http://dongpo.li/%E6%9D%82%E8%AE%B0/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
       <pubDate>Wed, 13 May 2020 11:17:37 +0800</pubDate>
@@ -94,15 +103,6 @@ table td {
       
       <guid>http://dongpo.li/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/</guid>
       <description>&lt;p&gt;推荐一些文章,主要是分布式和高并发的.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Tomcat的性能与最大并发(1000)</title>
-      <link>http://dongpo.li/tomcat%E7%9A%84%E6%80%A7%E8%83%BD%E4%B8%8E%E6%9C%80%E5%A4%A7%E5%B9%B6%E5%8F%911000/</link>
-      <pubDate>Sat, 15 Oct 2016 15:03:32 +0800</pubDate>
-      
-      <guid>http://dongpo.li/tomcat%E7%9A%84%E6%80%A7%E8%83%BD%E4%B8%8E%E6%9C%80%E5%A4%A7%E5%B9%B6%E5%8F%911000/</guid>
-      <description></description>
     </item>
     
   </channel>
