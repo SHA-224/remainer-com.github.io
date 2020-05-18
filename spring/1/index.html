@@ -170,7 +170,7 @@ li.dongpo.tc.service.SampleServiceImpl#hello执行时间0
 <span style="color:#75715e">// 抛NoSuchBeanDefinitionException
 </span><span style="color:#75715e"></span>SampleServiceImpl sampleService1 <span style="color:#f92672">=</span> context<span style="color:#f92672">.</span><span style="color:#a6e22e">getBean</span><span style="color:#f92672">(</span>SampleServiceImpl<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
 </code></pre></div><p>感兴趣的话可以是一下.</p>
-<p>感性上,IoC容器里应该是SampleServiceImpl的一个实例,因为xml中就是这样配置的,不明白其中的原理或者不知道有这个后置处理器的时候,问题就很难排查了,需要注意一下.</p>
+<p>这样本来是没有问题的,依赖反转要求就是依赖抽象而不是依赖具体实现,但是在感性上,IoC容器里应该是SampleServiceImpl的一个实例,因为xml中就是这样配置的,而且目前笔者很少见到有项目严格遵守这个规范.所以不明白其中的原理或者不知道有这个后置处理器的时候,问题就很难排查了,需要注意一下.</p>
                         </div>
 
                         
