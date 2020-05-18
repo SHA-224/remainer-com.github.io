@@ -80,7 +80,13 @@
                         <div class="post-content">
                             <p>啥也不说就是干.</p>
 <p>要深入理解一个东西,先要熟练使用.</p>
-<h1 id="pomxml">pom.xml</h1>
+<h1 id="说明">说明</h1>
+<p>我把代码提交到 <a href="https://github.com/remainer-com/dubbo-sample">https://github.com/remainer-com/dubbo-sample</a> 了
+需要注意的是,使用的dubbo版本是2.7.6,但是,成文时,dubbo官网的demo依赖的是alibaba的dubbo,也就是2.6.x之前的版本,如果按照官网的说法配置,会报错.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">java.lang.IllegalStateException: No application config found or it&#39;s not a valid config! Please add &lt;dubbo:application name=&#34;...&#34; /&gt; to your spring config.
+</code></pre></div><p>主要原因是配置2.7.x版本的配置方式变了.
+感兴趣的朋友可以拉2.6.8的分支测试.</p>
+<h1 id="heading"></h1>
                         </div>
 
                         

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Springs on SHA-1</title>
+    <link>http://dongpo.li/spring/</link>
+    <description>Recent content in Springs on SHA-1</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 May 2020 15:58:06 +0800</lastBuildDate>
+    
+	<atom:link href="http://dongpo.li/spring/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Spring扩展BeanPostProcessor</title>
+      <link>http://dongpo.li/spring/1/</link>
+      <pubDate>Mon, 18 May 2020 15:58:06 +0800</pubDate>
+      
+      <guid>http://dongpo.li/spring/1/</guid>
+      <description>&lt;p&gt;Spring提供了BeanPostProcessor接口可以在bean创建之前和之后做一些操作,最典型的就是给@RequestMapping添加切面,记录请求参数和返回结果到日志中方便后续问题排查.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

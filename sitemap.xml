@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://dongpo.li/spring/</loc>
+    <lastmod>2020-05-18T15:58:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dongpo.li/spring/1/</loc>
+    <lastmod>2020-05-18T15:58:06+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://dongpo.li/dubbo/0/</loc>
     <lastmod>2020-05-15T16:01:37+08:00</lastmod>
   </url>
@@ -10,6 +20,11 @@
   <url>
     <loc>http://dongpo.li/dubbo/</loc>
     <lastmod>2020-05-15T16:01:37+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://dongpo.li/dubbo/1/</loc>
+    <lastmod>2020-05-15T15:59:05+08:00</lastmod>
   </url>
   
   <url>
