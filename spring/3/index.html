@@ -119,47 +119,24 @@ http\://www.dongpo.li/schema/sample.xsd=/META-INF/sample-1.0.0.xsd
         <span style="color:#f92672">&lt;/xsd:complexType&gt;</span>
     <span style="color:#f92672">&lt;/xsd:element&gt;</span>
 <span style="color:#f92672">&lt;/xsd:schema&gt;</span>
-</code></pre></div><h2 id="配置">配置</h2>
+</code></pre></div><h2 id="3配置">3、配置</h2>
 <p>spring的xml文件配置示例如下</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;beans</span> <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
        <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/beans&#34;</span>
-       <span style="color:#a6e22e">xmlns:context=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/context&#34;</span>
        <span style="color:#a6e22e">xmlns:sample=</span><span style="color:#e6db74">&#34;http://www.dongpo.li/schema/sample&#34;</span>
-       <span style="color:#a6e22e">xmlns:aop=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/aop&#34;</span>
        <span style="color:#a6e22e">xsi:schemaLocation=</span><span style="color:#e6db74">&#34;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-</span><span style="color:#e6db74">       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-</span><span style="color:#e6db74">       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 </span><span style="color:#e6db74">       http://www.dongpo.li/schema/sample http://www.dongpo.li/schema/sample.xsd&#34;</span><span style="color:#f92672">&gt;</span>
-
-<span style="color:#75715e">&lt;!--    &lt;context:property-placeholder location=&#34;classpath*:*.properties&#34;/&gt;--&gt;</span>
-<span style="color:#75715e">&lt;!--    &lt;context:component-scan base-package=&#34;li.dongpo.tc&#34; /&gt;--&gt;</span>
     
     <span style="color:#f92672">&lt;sample:sample</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;name&#34;</span> <span style="color:#f92672">/&gt;</span>
 
-    <span style="color:#f92672">&lt;aop:aspectj-autoproxy</span> <span style="color:#f92672">/&gt;</span>
-    <span style="color:#f92672">&lt;aop:config&gt;</span>
-        <span style="color:#f92672">&lt;aop:aspect</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;sampleAspect&#34;</span> <span style="color:#a6e22e">ref=</span><span style="color:#e6db74">&#34;sampleLogger&#34;</span><span style="color:#f92672">&gt;</span>
-            <span style="color:#f92672">&lt;aop:pointcut</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;samplePointcut&#34;</span> <span style="color:#a6e22e">expression=</span><span style="color:#e6db74">&#34;execution(* li.dongpo.tc.service.*.*(..))&#34;</span> <span style="color:#f92672">/&gt;</span>
-            <span style="color:#f92672">&lt;aop:after</span> <span style="color:#a6e22e">method=</span><span style="color:#e6db74">&#34;after&#34;</span> <span style="color:#a6e22e">pointcut-ref=</span><span style="color:#e6db74">&#34;samplePointcut&#34;</span> <span style="color:#f92672">/&gt;</span>
-        <span style="color:#f92672">&lt;/aop:aspect&gt;</span>
-    <span style="color:#f92672">&lt;/aop:config&gt;</span>
-
-    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;sampleService&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;li.dongpo.tc.service.SampleServiceImpl&#34;</span><span style="color:#f92672">&gt;</span>
-        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;depService&#34;</span> <span style="color:#a6e22e">ref=</span><span style="color:#e6db74">&#34;depService&#34;</span> <span style="color:#f92672">/&gt;</span>
-    <span style="color:#f92672">&lt;/bean&gt;</span>
-    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;depService&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;li.dongpo.tc.service.DepService&#34;</span><span style="color:#f92672">&gt;</span>
-        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;sampleService&#34;</span> <span style="color:#a6e22e">ref=</span><span style="color:#e6db74">&#34;sampleService&#34;</span> <span style="color:#f92672">/&gt;</span>
-    <span style="color:#f92672">&lt;/bean&gt;</span>
-
-    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;sampleBeanPostProcessor&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;li.dongpo.tc.service.SampleBeanPostProcessor&#34;</span> <span style="color:#f92672">/&gt;</span>
-    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;sampleLogger&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;li.dongpo.tc.service.SampleLogger&#34;</span> <span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;sampleService&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;li.dongpo.tc.service.SampleServiceImpl&#34;</span> <span style="color:#f92672">/&gt;</span>
 <span style="color:#f92672">&lt;/beans&gt;</span>
 </code></pre></div><p>其中重要的几个是：<br>
 1、xmlns:sample=&quot;http://www.dongpo.li/schema/sample&rdquo;<br>
 2、http://www.dongpo.li/schema/sample <a href="http://www.dongpo.li/schema/sample.xsd">http://www.dongpo.li/schema/sample.xsd</a><br>
 3、&lt;sample:sample name=&quot;name&rdquo; /&gt;</p>
-<p>其他都不是我们这次相关的配置，可以按照自己的方式修改或删除。</p>
-<h2 id="主逻辑">主逻辑</h2>
+<p>sampleService不是我们这次相关的配置，相关类请自行创建，主要是用来测试的和debug，可以按照自己的方式修改或删除。</p>
+<h2 id="4主逻辑">4、主逻辑</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> org.springframework.beans.factory.config.BeanDefinition<span style="color:#f92672">;</span>
 <span style="color:#f92672">import</span> org.springframework.beans.factory.xml.BeanDefinitionParser<span style="color:#f92672">;</span>
 <span style="color:#f92672">import</span> org.springframework.beans.factory.xml.NamespaceHandlerSupport<span style="color:#f92672">;</span>
@@ -182,16 +159,13 @@ http\://www.dongpo.li/schema/sample.xsd=/META-INF/sample-1.0.0.xsd
 
 <span style="color:#f92672">}</span>
 </code></pre></div><p>这样，通过我们刚新建的spring.handlers文件中的内容就能找到SampleNamespaceHandler这个类。</p>
-<h2 id="测试代码">测试代码</h2>
+<h2 id="5测试代码">5、测试代码</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Application</span> <span style="color:#f92672">{</span>
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> InterruptedException <span style="color:#f92672">{</span>
         ApplicationContext context <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ClassPathXmlApplicationContext<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;spring.xml&#34;</span><span style="color:#f92672">);</span>
         System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;context初始化完成,开始获取bean&#34;</span><span style="color:#f92672">);</span>
         SampleService sampleService0 <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>SampleService<span style="color:#f92672">)</span> context<span style="color:#f92672">.</span><span style="color:#a6e22e">getBean</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;sampleService&#34;</span><span style="color:#f92672">);</span>
         sampleService0<span style="color:#f92672">.</span><span style="color:#a6e22e">hello</span><span style="color:#f92672">();</span>
-
-        SampleService sampleService1 <span style="color:#f92672">=</span> context<span style="color:#f92672">.</span><span style="color:#a6e22e">getBean</span><span style="color:#f92672">(</span>SampleService<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
-        sampleService1<span style="color:#f92672">.</span><span style="color:#a6e22e">hello</span><span style="color:#f92672">();</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>执行这个代码就可以看到输出</p>
