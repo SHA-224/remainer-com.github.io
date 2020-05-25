@@ -158,19 +158,22 @@ http\://www.dongpo.li/schema/sample.xsd=/META-INF/sample-1.0.0.xsd
     <span style="color:#f92672">}</span>
 
 <span style="color:#f92672">}</span>
-</code></pre></div><p>这样，通过我们刚新建的spring.handlers文件中的内容就能找到SampleNamespaceHandler这个类。</p>
+</code></pre></div><p>这样，通过我们刚新建的spring.handlers文件中的内容就能找到SampleNamespaceHandler这个类。使用的是spring自己实现的SPI机制，感兴趣的可以自行了解。</p>
 <h2 id="5测试代码">5、测试代码</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Application</span> <span style="color:#f92672">{</span>
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> InterruptedException <span style="color:#f92672">{</span>
         ApplicationContext context <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ClassPathXmlApplicationContext<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;spring.xml&#34;</span><span style="color:#f92672">);</span>
         System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;context初始化完成,开始获取bean&#34;</span><span style="color:#f92672">);</span>
-        SampleService sampleService0 <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>SampleService<span style="color:#f92672">)</span> context<span style="color:#f92672">.</span><span style="color:#a6e22e">getBean</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;sampleService&#34;</span><span style="color:#f92672">);</span>
-        sampleService0<span style="color:#f92672">.</span><span style="color:#a6e22e">hello</span><span style="color:#f92672">();</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>执行这个代码就可以看到输出</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">BeanDefinitionParser start, name=name, value=value
-</code></pre></div><p>本次教程就算结束了</p>
+</code></pre></div><p>教程就算结束了</p>
+<h1 id="使用场景">使用场景</h1>
+<p>说这么热闹，这个功能到底有什么用<br>
+1、这个功能本身返回的就是BeanDefinition，所以是可以修改bean本身初始化方式的，参见aop的相关部分<br>
+2、可以在SampleNamespaceHandler开一个TCP端口做RPC调用，可以参见dubbo的相关实现<br>
+3、可以做一个通用的线程池组件实现类似ActorSystem的功能。减少代码里每人开个线程池。</p>
 <h1 id="后记">后记</h1>
 <p>1、整体来说还是比较简单的，只是一个简单的Demo。<br>
 2、spring.schemas中还可以指定 http://www.dongpo.li/schema/sample.xsd=com/xxx/&hellip;/sample-1.0.0.xsd 将xsd文件放在和类同名的包里，具体可以参照aop的实现。</p>
