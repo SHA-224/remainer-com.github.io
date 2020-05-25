@@ -12,30 +12,21 @@
     
     
     <item>
+      <title>Spring单例bean初始化过程</title>
+      <link>http://dongpo.li/spring/2/</link>
+      <pubDate>Mon, 18 May 2020 18:17:09 +0800</pubDate>
+      
+      <guid>http://dongpo.li/spring/2/</guid>
+      <description>&lt;p&gt;Spring单例bean初始化过程&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Spring扩展BeanPostProcessor</title>
       <link>http://dongpo.li/spring/1/</link>
       <pubDate>Mon, 18 May 2020 15:58:06 +0800</pubDate>
       
       <guid>http://dongpo.li/spring/1/</guid>
       <description>&lt;p&gt;Spring提供了BeanPostProcessor接口可以在bean创建之前和之后做一些操作,最典型的就是给@RequestMapping添加切面,记录请求参数和返回结果到日志中方便后续问题排查.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>0、先达成一些共识</title>
-      <link>http://dongpo.li/dubbo/0/</link>
-      <pubDate>Fri, 15 May 2020 16:01:37 +0800</pubDate>
-      
-      <guid>http://dongpo.li/dubbo/0/</guid>
-      <description>&lt;p&gt;所有零基础xxx都是瞎扯淡,不服的有本事找个不识字的来(我就是杠精..).&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>1、先写一个Demo</title>
-      <link>http://dongpo.li/dubbo/1/</link>
-      <pubDate>Fri, 15 May 2020 15:59:05 +0800</pubDate>
-      
-      <guid>http://dongpo.li/dubbo/1/</guid>
-      <description>&lt;p&gt;啥也不说就是干.&lt;/p&gt;</description>
     </item>
     
     <item>

@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.69.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Spring单例bean初始化过程 | SHA-1</title>
+    <meta property="og:title" content="Spring单例bean初始化过程 - SHA-1">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2020-05-18T18:17:09&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2020-05-18T18:17:09&#43;08:00">
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="Spring单例bean初始化过程">
+        
+    <meta name="author" content="">
+    <meta property="og:url" content="http://dongpo.li/spring/2/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="http://dongpo.li/">
+                        SHA-1
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="http://dongpo.li/">首页</a>
+                    
+                    <a  href="http://dongpo.li/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+        
+        
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">Spring单例bean初始化过程</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2020年5月18日
+                        </date>
+                        
+                        
+                        
+                        <div class="post-content">
+                            <p>Spring单例bean初始化过程</p>
+<h1 id="简单介绍">简单介绍</h1>
+<p>Spring在IoC容器初始化完毕,会把非lazy-init的bean初始化,方法入口是 org.springframework.context.support.AbstractApplicationContext#finishBeanFactoryInitialization()方法里的beanFactory.preInstantiateSingletons();
+其中的beanFactory默认是DefaultListableBeanFactory的一个实例.
+这行代码的注释是  Instantiate all remaining (non-lazy-init) singletons.
+初始化其他非懒加载的单例beans.</p>
+<h1 id="开始">开始</h1>
+<p>我们以其中一个bean为例.这里为了简化问题,我们先忽略初始化的时候一些和普通bean无关的分支,专注于一个普通的bean初始化.
+每一个普通的bean都会执行getBean(String name)方法,这个方法其实就是我们最常用的context.getBean(name)方法.
+现在就是单例bean的获取过程了.
+首先执行  org.springframework.beans.factory.support.AbstractBeanFactory#doGetBean</p>
+<p>/** Cache of singleton factories: bean name to ObjectFactory. */
+private final Map&lt;String, ObjectFactory&lt;?&raquo; singletonFactories = new HashMap&lt;&gt;(16);</p>
+<p>/** Cache of early singleton objects: bean name to bean instance. */
+private final Map&lt;String, Object&gt; earlySingletonObjects = new HashMap&lt;&gt;(16);</p>
+<p>/** Names of beans that are currently in creation. */
+private final Set<String> singletonsCurrentlyInCreation =
+Collections.newSetFromMap(new ConcurrentHashMap&lt;&gt;(16));</p>
+<p>org.springframework.context.annotation.internalConfigurationAnnotationProcessor
+org.springframework.context.annotation.internalAutowiredAnnotationProcessor
+org.springframework.context.event.internalEventListenerProcessor
+org.springframework.context.event.internalEventListenerFactory
+sampleServiceImpl
+sampleBeanPostProcessor</p>
+<p>RootBeanDefinition</p>
+<p>[li.dongpo.tc.service.SampleServiceImpl]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in class path resource [spring.xml]</p>
+<p>GenericBeanDefinition
+RootBeanDefinition
+DefaultSingletonBeanRegistry
+InstantiationAwareBeanPostProcessor</p>
+<p>CglibSubclassingInstantiationStrategy</p>
+<p>overriddenDefaultEditors</p>
+<p>alreadyCreated</p>
+<p>boolean earlySingletonExposure = (mbd.isSingleton() &amp;&amp; this.allowCircularReferences &amp;&amp;
+isSingletonCurrentlyInCreation(beanName));</p>
+<p>private final Map&lt;String, Object&gt; singletonObjects = 一级缓存</p>
+<p>private final Map&lt;String, ObjectFactory&lt;?&raquo; singletonFactories = 三级</p>
+<p>private final Map&lt;String, Object&gt; earlySingletonObjects = 二级</p>
+<p>AutowiredAnnotationBeanPostProcessor</p>
+<p>NamespaceHandler  BeanPostProcessor  BeanDefinitionParser</p>
+                        </div>
+
+                        
+
+
+                        
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            没有标签
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="http://dongpo.li/tags/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/">文章推荐</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="http://dongpo.li/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2020 <a href="http://dongpo.li/">SHA-1 By </a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+
+
+
+
+
+<script type="text/javascript">
+(function(){
+	if (typeof self === 'undefined' || !self.Prism || !self.document) {
+		return;
+	}
+
+	if (!Prism.plugins.toolbar) {
+		console.warn('Copy to Clipboard plugin loaded before Toolbar plugin.');
+
+		return;
+	}
+
+	var ClipboardJS = window.ClipboardJS || undefined;
+
+	if (!ClipboardJS && typeof require === 'function') {
+		ClipboardJS = require('clipboard');
+	}
+
+	var callbacks = [];
+
+	if (!ClipboardJS) {
+		var script = document.createElement('script');
+		var head = document.querySelector('head');
+
+		script.onload = function() {
+			ClipboardJS = window.ClipboardJS;
+
+			if (ClipboardJS) {
+				while (callbacks.length) {
+					callbacks.pop()();
+				}
+			}
+		};
+
+		script.src = 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js';
+		head.appendChild(script);
+	}
+
+	Prism.plugins.toolbar.registerButton('copy-to-clipboard', function (env) {
+		var linkCopy = document.createElement('button');
+		linkCopy.textContent = '复制代码';
+
+		if (!ClipboardJS) {
+			callbacks.push(registerClipboard);
+		} else {
+			registerClipboard();
+		}
+
+		return linkCopy;
+
+		function registerClipboard() {
+			var clip = new ClipboardJS(linkCopy, {
+				'text': function () {
+					return env.code;
+				}
+			});
+
+			clip.on('success', function() {
+				linkCopy.textContent = '复制成功!';
+
+				resetText();
+			});
+			clip.on('error', function () {
+				linkCopy.textContent = '按 Ctrl+C 复制';
+
+				resetText();
+			});
+		}
+
+		function resetText() {
+			setTimeout(function () {
+				linkCopy.textContent = '复制代码';
+			}, 5000);
+		}
+	});
+})();
+
+</script>
+</body>
+</html>

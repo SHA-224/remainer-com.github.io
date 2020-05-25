@@ -6,10 +6,19 @@
     <description>Recent content in Springs on SHA-1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 May 2020 15:58:06 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2020 18:17:09 +0800</lastBuildDate>
     
 	<atom:link href="http://dongpo.li/spring/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Spring单例bean初始化过程</title>
+      <link>http://dongpo.li/spring/2/</link>
+      <pubDate>Mon, 18 May 2020 18:17:09 +0800</pubDate>
+      
+      <guid>http://dongpo.li/spring/2/</guid>
+      <description>&lt;p&gt;Spring单例bean初始化过程&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Spring扩展BeanPostProcessor</title>
