@@ -6,10 +6,30 @@
     <description>Recent content in Springs on SHA-1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 26 May 2020 14:44:27 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2020 16:18:30 +0800</lastBuildDate>
     
 	<atom:link href="http://dongpo.li/spring/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>抽丝剥茧SpringIoC</title>
+      <link>http://dongpo.li/spring/6/</link>
+      <pubDate>Mon, 01 Jun 2020 16:18:30 +0800</pubDate>
+      
+      <guid>http://dongpo.li/spring/6/</guid>
+      <description>&lt;p&gt;网上相关的spring源码阅读都是从refresh方法开始，这虽然确实是spring初始化的入口，但是初始化的链路实在是太长了，不免枯燥。&lt;br&gt;
+所以我们这次从结论开始，一层层了解IoC的初始化过程。&lt;br&gt;
+我们在这个过程中依然省略了相当多的细节，全部细节的话不是一两篇文章能搞定的。所以，大家发现有什么必须在这篇文章存在的细节或者有什么不清楚或者异议的话可以 email  &lt;a href=&#34;mailto:dongpo.li@hotmail.com&#34;&gt;dongpo.li@hotmail.com&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>手写一个配置热加载组件</title>
+      <link>http://dongpo.li/spring/5/</link>
+      <pubDate>Tue, 26 May 2020 18:08:13 +0800</pubDate>
+      
+      <guid>http://dongpo.li/spring/5/</guid>
+      <description>&lt;p&gt;之前写了两篇文章：spring标签解析和自定义注解，简单尝试了一下spring给提供的两个扩展功能，但是，真正应该怎么用，怎么用到项目里。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>基于Spring自定义一个注解</title>

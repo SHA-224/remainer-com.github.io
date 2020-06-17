@@ -7,20 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>MySQL语句收藏 | SHA-1</title>
-    <meta property="og:title" content="MySQL语句收藏 - SHA-1">
+    <title>抽丝剥茧SpringIoC | SHA-1</title>
+    <meta property="og:title" content="抽丝剥茧SpringIoC - SHA-1">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content="2019-08-02T11:17:37&#43;08:00">
+    <meta property="article:published_time" content="2020-06-01T16:18:30&#43;08:00">
         
         
-    <meta property="article:modified_time" content="2019-08-02T11:17:37&#43;08:00">
+    <meta property="article:modified_time" content="2020-06-01T16:18:30&#43;08:00">
         
     <meta name="Keywords" content="">
-    <meta name="description" content="MySQL语句收藏">
+    <meta name="description" content="抽丝剥茧SpringIoC">
         
     <meta name="author" content="">
-    <meta property="og:url" content="http://dongpo.li/%E6%9D%82%E8%AE%B0/mysql/">
+    <meta property="og:url" content="http://dongpo.li/spring/6/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="/css/normalize.css">
@@ -69,34 +69,38 @@
                 <div class="res-cons">
                     <article class="post">
                         <header>
-                            <h1 class="post-title">MySQL语句收藏</h1>
+                            <h1 class="post-title">抽丝剥茧SpringIoC</h1>
                         </header>
                         <date class="post-meta meta-date">
-                            2019年8月2日
+                            2020年6月1日
                         </date>
                         
                         
                         
                         <div class="post-content">
-                            <h1 id="mysql语句收藏">MySQL语句收藏</h1>
-<h2 id="查询数据库占用磁盘空间">查询数据库占用磁盘空间</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> 
-TABLE_SCHEMA, 
-concat(<span style="color:#66d9ef">truncate</span>(<span style="color:#66d9ef">sum</span>(data_length)<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>,<span style="color:#ae81ff">2</span>),<span style="color:#e6db74">&#39; MB&#39;</span>) <span style="color:#66d9ef">as</span> data_size,
-concat(<span style="color:#66d9ef">truncate</span>(<span style="color:#66d9ef">sum</span>(index_length)<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>,<span style="color:#ae81ff">2</span>),<span style="color:#e6db74">&#39;MB&#39;</span>) <span style="color:#66d9ef">as</span> index_size
-<span style="color:#66d9ef">from</span> information_schema.tables
-<span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> TABLE_SCHEMA
-<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> data_size <span style="color:#66d9ef">desc</span>;
-</code></pre></div><h2 id="查询表占用空间">查询表占用空间</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> 
-<span style="color:#66d9ef">TABLE_NAME</span>, 
-concat(<span style="color:#66d9ef">truncate</span>(data_length<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>,<span style="color:#ae81ff">2</span>),<span style="color:#e6db74">&#39; MB&#39;</span>) <span style="color:#66d9ef">as</span> data_size,
-concat(<span style="color:#66d9ef">truncate</span>(index_length<span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1024</span>,<span style="color:#ae81ff">2</span>),<span style="color:#e6db74">&#39; MB&#39;</span>) <span style="color:#66d9ef">as</span> index_size
-<span style="color:#66d9ef">from</span> information_schema.tables 
-<span style="color:#66d9ef">where</span> TABLE_SCHEMA <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;mysql&#39;</span>
-<span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> <span style="color:#66d9ef">TABLE_NAME</span>
-<span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> data_length <span style="color:#66d9ef">desc</span>;
-</code></pre></div>
+                            <p>网上相关的spring源码阅读都是从refresh方法开始，这虽然确实是spring初始化的入口，但是初始化的链路实在是太长了，不免枯燥。<br>
+所以我们这次从结论开始，一层层了解IoC的初始化过程。<br>
+我们在这个过程中依然省略了相当多的细节，全部细节的话不是一两篇文章能搞定的。所以，大家发现有什么必须在这篇文章存在的细节或者有什么不清楚或者异议的话可以 email  <a href="mailto:dongpo.li@hotmail.com">dongpo.li@hotmail.com</a></p>
+<h1 id="简单介绍">简单介绍</h1>
+<p>我们都知道，徒手撸一个IoC的话，其实就是一个HashMap&lt;String, Object&gt;，那在spring中，这个map中的数据是怎么一步步填充呢。</p>
+<p>首先，spring源码中的这个map定义是</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#960050;background-color:#1e0010">#</span> org<span style="color:#f92672">.</span><span style="color:#a6e22e">springframework</span><span style="color:#f92672">.</span><span style="color:#a6e22e">beans</span><span style="color:#f92672">.</span><span style="color:#a6e22e">factory</span><span style="color:#f92672">.</span><span style="color:#a6e22e">support</span><span style="color:#f92672">.</span><span style="color:#a6e22e">DefaultSingletonBeanRegistry</span><span style="color:#960050;background-color:#1e0010">#</span>singletonObjects
+
+<span style="color:#75715e">/** Cache of singleton objects: bean name to bean instance. */</span>
+<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Object<span style="color:#f92672">&gt;</span> singletonObjects <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ConcurrentHashMap<span style="color:#f92672">&lt;&gt;(</span>256<span style="color:#f92672">);</span>
+</code></pre></div><p>可以看到和一些徒手撸的IoC定义没什么不一样</p>
+<p>说到这里就不得不说另外两个定义</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/** Cache of singleton factories: bean name to ObjectFactory. */</span>
+<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> ObjectFactory<span style="color:#f92672">&lt;?&gt;&gt;</span> singletonFactories <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;(</span>16<span style="color:#f92672">);</span>
+<span style="color:#75715e">/** Cache of early singleton objects: bean name to bean instance. */</span>
+<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Object<span style="color:#f92672">&gt;</span> earlySingletonObjects <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;(</span>16<span style="color:#f92672">);</span>
+</code></pre></div><p>这两个定义和上边的singletonObjects在一些文章中并称bean初始化的三级缓存，主要作用就是解决循环依赖。<br>
+具体实现细节参见  org.springframework.beans.factory.support.DefaultSingletonBeanRegistry#getSingleton(java.lang.String, boolean)<br>
+我们说下实现思路<br>
+1、首先看singletonObjects有没有，有的话直接返回。这步没啥好说的，常规的缓存都是先看缓存中有没有，有就返回。
+2、</p>
+<h1 id="参考">参考</h1>
+<p><a href="https://juejin.im/post/5da59f585188254e915c9522">https://juejin.im/post/5da59f585188254e915c9522</a></p>
                         </div>
 
                         
