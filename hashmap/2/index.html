@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.69.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>HashMap初始容量 | SHA-1</title>
+    <meta property="og:title" content="HashMap初始容量 - SHA-1">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2020-12-25T17:22:17&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2020-12-25T17:22:17&#43;08:00">
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="HashMap初始容量">
+        
+    <meta name="author" content="">
+    <meta property="og:url" content="http://dongpo.li/hashmap/2/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="http://dongpo.li/">
+                        SHA-1
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="http://dongpo.li/">首页</a>
+                    
+                    <a  href="http://dongpo.li/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+        
+        
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">HashMap初始容量</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2020年12月25日
+                        </date>
+                        
+                        
+                        
+                        <div class="post-content">
+                            <p>哪哪都说HashMap在不指定初始化容量的时候默认是16,那HashMap的源码在定义的时候有没有好玩的东西呢</p>
+<h1 id="开始">开始</h1>
+<p>首先看HashMap中默认初始容量的源码.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * The default initial capacity - MUST be a power of two.
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> DEFAULT_INITIAL_CAPACITY <span style="color:#f92672">=</span> 1 <span style="color:#f92672">&lt;&lt;</span> 4<span style="color:#f92672">;</span> <span style="color:#75715e">// aka 16
+</span></code></pre></div><p>源码选自 AdoptOpenJdk 11.0.2+9</p>
+<h1 id="正文">正文</h1>
+<p>我们看变量名 DEFAULT_INITIAL_CAPACITY,说明这确实是HashMap初始化的默认容量,但是说好的16呢. 读者：“你莫不是在骗我”。
+别急，且看 变量定义的时候使用了  1 &laquo; 4
+这1和4都认识,&laquo;是个什么鬼,一些基础不扎实的可能就忘了.</p>
+<p>&laquo;: 左移运算符(和 +-*/ 是一辈的),它是这么定义的：将一个运算对象的各二进制位全部左移若干位（左边的二进制位丢弃，右边补0）。</p>
+<p>首先
+1 = 00000000000000000000000000000001(4字节,32位)
+左移一位变成 00000000000000000000000000000010
+再移一位变成 00000000000000000000000000000100
+再移一位变成 00000000000000000000000000001000
+再移一位变成 00000000000000000000000000010000
+这就是16不用解释了吧.</p>
+<h1 id="问题">问题</h1>
+<p>那么问题来了,HashMap的作者为什么要这么定义,炫技吧.</p>
+<p>遇代码不懂看注释,注释我一并带过来了.这里用我匮乏的词汇量翻译一下: 默认初始化容量 - 必须是2的次方.</p>
+<p>看一些解释文章,都说HashMap每次扩容都是2的整数次方(原因我们在下一篇文章中探讨一下),那么初始化也不能例外,也得是2的整数次方.</p>
+<p>定义一个数是2的n次方,有什么方法?</p>
+<p>二逼青年: 2<em>2</em>2<em>2</em>&hellip;(n个)
+普通青年: 2^n
+文艺青年: 1 &laquo; n</p>
+<p>前两个我们都能看懂,最后一个怎么说,我们还是看刚才的16</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">00000000000000000000000000000001 = 1    1
+00000000000000000000000000000010 = 2    1左移1位
+00000000000000000000000000000100 = 4    1左移2位
+00000000000000000000000000001000 = 8    1左移3位
+00000000000000000000000000010000 = 16   1左移4位
+</code></pre></div><p>看吧,2的n次方 等于 1左移n位,有趣的小知识又增加了</p>
+<p>还是没说JDK为什么要这么定义.</p>
+<p>上边说了,HashMap在扩容的时候,容量都是2的整数次方,那么我们完全可以用当前的容量左移一位实现呀,不会更麻烦,性能却更高(移位算法直接操作二进制比乘法性能高的多),而且看起来逼格更高还能炫技(炫技肯定是次要的啦,主要还是性能,JDK的源码简直不要太喜欢移位算法).</p>
+<p>我猜测作者大概认为,既然之后定义2的次方要使用移位算法,不如索性初始化容量也用移位定义吧,还自带语义(看见了吧,注释就是给我们这些菜鸟用的,大佬可以直接知道这就是2的4次,注释完全就是多余的).</p>
+                        </div>
+
+                        
+
+
+                        
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            没有标签
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="http://dongpo.li/tags/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/">文章推荐</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="http://dongpo.li/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2020 <a href="http://dongpo.li/">SHA-1 By </a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+
+
+
+
+
+<script type="text/javascript">
+(function(){
+	if (typeof self === 'undefined' || !self.Prism || !self.document) {
+		return;
+	}
+
+	if (!Prism.plugins.toolbar) {
+		console.warn('Copy to Clipboard plugin loaded before Toolbar plugin.');
+
+		return;
+	}
+
+	var ClipboardJS = window.ClipboardJS || undefined;
+
+	if (!ClipboardJS && typeof require === 'function') {
+		ClipboardJS = require('clipboard');
+	}
+
+	var callbacks = [];
+
+	if (!ClipboardJS) {
+		var script = document.createElement('script');
+		var head = document.querySelector('head');
+
+		script.onload = function() {
+			ClipboardJS = window.ClipboardJS;
+
+			if (ClipboardJS) {
+				while (callbacks.length) {
+					callbacks.pop()();
+				}
+			}
+		};
+
+		script.src = 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js';
+		head.appendChild(script);
+	}
+
+	Prism.plugins.toolbar.registerButton('copy-to-clipboard', function (env) {
+		var linkCopy = document.createElement('button');
+		linkCopy.textContent = '复制代码';
+
+		if (!ClipboardJS) {
+			callbacks.push(registerClipboard);
+		} else {
+			registerClipboard();
+		}
+
+		return linkCopy;
+
+		function registerClipboard() {
+			var clip = new ClipboardJS(linkCopy, {
+				'text': function () {
+					return env.code;
+				}
+			});
+
+			clip.on('success', function() {
+				linkCopy.textContent = '复制成功!';
+
+				resetText();
+			});
+			clip.on('error', function () {
+				linkCopy.textContent = '按 Ctrl+C 复制';
+
+				resetText();
+			});
+		}
+
+		function resetText() {
+			setTimeout(function () {
+				linkCopy.textContent = '复制代码';
+			}, 5000);
+		}
+	});
+})();
+
+</script>
+</body>
+</html>
