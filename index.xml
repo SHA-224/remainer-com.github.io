@@ -95,24 +95,6 @@
     </item>
     
     <item>
-      <title>0、先达成一些共识</title>
-      <link>http://dongpo.li/dubbo%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/0/</link>
-      <pubDate>Fri, 15 May 2020 16:01:37 +0800</pubDate>
-      
-      <guid>http://dongpo.li/dubbo%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/0/</guid>
-      <description>&lt;p&gt;dubbo毕竟是一个工程化的项目，还是比较复杂的，所以我们在这里达成一些共识，防止之后因为一些其他的问题导致理解上的误差，dubbo捐给Apache之后还是做了很多的改变的。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>1、启动(DubboBootstrap)</title>
-      <link>http://dongpo.li/dubbo%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/1/</link>
-      <pubDate>Fri, 15 May 2020 15:59:05 +0800</pubDate>
-      
-      <guid>http://dongpo.li/dubbo%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/1/</guid>
-      <description>&lt;p&gt;抄起键盘就是干.先看是怎么启动的.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>搭建一个静态博客</title>
       <link>http://dongpo.li/%E6%9D%82%E8%AE%B0/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
       <pubDate>Wed, 13 May 2020 11:17:37 +0800</pubDate>
