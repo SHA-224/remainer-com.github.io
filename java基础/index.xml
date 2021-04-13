@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Java基础s on SHA-1</title>
-    <link>http://www.dongpo.li/java%E5%9F%BA%E7%A1%80/</link>
+    <link>/java%E5%9F%BA%E7%A1%80/</link>
     <description>Recent content in Java基础s on SHA-1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 21 Sep 2020 11:05:08 +0800</lastBuildDate>
     
-	<atom:link href="http://www.dongpo.li/java%E5%9F%BA%E7%A1%80/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/java%E5%9F%BA%E7%A1%80/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Java类加载器双亲委托</title>
-      <link>http://www.dongpo.li/java%E5%9F%BA%E7%A1%80/1/</link>
+      <link>/java%E5%9F%BA%E7%A1%80/1/</link>
       <pubDate>Mon, 21 Sep 2020 11:05:08 +0800</pubDate>
       
-      <guid>http://www.dongpo.li/java%E5%9F%BA%E7%A1%80/1/</guid>
+      <guid>/java%E5%9F%BA%E7%A1%80/1/</guid>
       <description>&lt;p&gt;1&lt;/p&gt;</description>
     </item>
     
