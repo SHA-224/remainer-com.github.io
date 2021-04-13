@@ -12,6 +12,24 @@
     
     
     <item>
+      <title>1、启动(DubboBootstrap)</title>
+      <link>/dubbo%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/1/</link>
+      <pubDate>Tue, 13 Apr 2021 15:01:05 +0800</pubDate>
+      
+      <guid>/dubbo%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/1/</guid>
+      <description>&lt;p&gt;抄起键盘就是干.先看是怎么启动的.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>0、先达成一些共识</title>
+      <link>/dubbo%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/0/</link>
+      <pubDate>Mon, 12 Apr 2021 15:01:37 +0800</pubDate>
+      
+      <guid>/dubbo%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/0/</guid>
+      <description>&lt;p&gt;dubbo毕竟是一个工程化的项目，还是比较复杂的，所以我们在这里达成一些共识，防止之后因为一些其他的问题导致理解上的误差，dubbo捐给Apache之后还是做了很多的改变的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>HashMap初始容量</title>
       <link>/hashmap/2/</link>
       <pubDate>Fri, 25 Dec 2020 17:22:17 +0800</pubDate>
@@ -27,15 +45,6 @@
       
       <guid>/hashmap/1/</guid>
       <description>&lt;p&gt;据说HashMap是Java设计的最好的API,网上解析的文章多了,里边的一些细节就暴露写出来了,也暴露出了其中的一些未解之谜,这里根据自己的理解和网上找到的一些资料做个笔记.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Java类加载器双亲委托</title>
-      <link>/java%E5%9F%BA%E7%A1%80/1/</link>
-      <pubDate>Mon, 21 Sep 2020 11:05:08 +0800</pubDate>
-      
-      <guid>/java%E5%9F%BA%E7%A1%80/1/</guid>
-      <description>&lt;p&gt;1&lt;/p&gt;</description>
     </item>
     
     <item>
