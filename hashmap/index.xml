@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>HashMaps on SHA-1</title>
-    <link>http://dongpo.li/hashmap/</link>
+    <link>http://www.dongpo.li/hashmap/</link>
     <description>Recent content in HashMaps on SHA-1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 25 Dec 2020 17:22:17 +0800</lastBuildDate>
     
-	<atom:link href="http://dongpo.li/hashmap/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.dongpo.li/hashmap/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>HashMap初始容量</title>
-      <link>http://dongpo.li/hashmap/2/</link>
+      <link>http://www.dongpo.li/hashmap/2/</link>
       <pubDate>Fri, 25 Dec 2020 17:22:17 +0800</pubDate>
       
-      <guid>http://dongpo.li/hashmap/2/</guid>
+      <guid>http://www.dongpo.li/hashmap/2/</guid>
       <description>&lt;p&gt;哪哪都说HashMap在不指定初始化容量的时候默认是16,那HashMap的源码在定义的时候有没有好玩的东西呢&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>HashMap杂记</title>
-      <link>http://dongpo.li/hashmap/1/</link>
+      <link>http://www.dongpo.li/hashmap/1/</link>
       <pubDate>Fri, 25 Dec 2020 17:00:11 +0800</pubDate>
       
-      <guid>http://dongpo.li/hashmap/1/</guid>
+      <guid>http://www.dongpo.li/hashmap/1/</guid>
       <description>&lt;p&gt;据说HashMap是Java设计的最好的API,网上解析的文章多了,里边的一些细节就暴露写出来了,也暴露出了其中的一些未解之谜,这里根据自己的理解和网上找到的一些资料做个笔记.&lt;/p&gt;</description>
     </item>
     
