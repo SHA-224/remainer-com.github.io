@@ -13,19 +13,19 @@
     
     <item>
       <title>1、启动(DubboBootstrap)</title>
-      <link>/dubbo%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/1/</link>
+      <link>/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/1/</link>
       <pubDate>Tue, 13 Apr 2021 15:01:05 +0800</pubDate>
       
-      <guid>/dubbo%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/1/</guid>
+      <guid>/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/1/</guid>
       <description>&lt;p&gt;抄起键盘就是干.先看是怎么启动的.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>0、先达成一些共识</title>
-      <link>/dubbo%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/0/</link>
+      <link>/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/0/</link>
       <pubDate>Mon, 12 Apr 2021 15:01:37 +0800</pubDate>
       
-      <guid>/dubbo%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/0/</guid>
+      <guid>/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/0/</guid>
       <description>&lt;p&gt;dubbo毕竟是一个工程化的项目，还是比较复杂的，所以我们在这里达成一些共识，防止之后因为一些其他的问题导致理解上的误差，dubbo捐给Apache之后还是做了很多的改变的。&lt;/p&gt;</description>
     </item>
     
