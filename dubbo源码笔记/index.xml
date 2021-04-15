@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dubbo源码笔记s on SHA-1</title>
-    <link>/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/</link>
+    <link>http://www.dongpo.li/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/</link>
     <description>Recent content in Dubbo源码笔记s on SHA-1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 13 Apr 2021 15:01:05 +0800</lastBuildDate>
     
-	<atom:link href="/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.dongpo.li/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>1、启动(DubboBootstrap)</title>
-      <link>/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/1/</link>
+      <link>http://www.dongpo.li/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/1/</link>
       <pubDate>Tue, 13 Apr 2021 15:01:05 +0800</pubDate>
       
-      <guid>/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/1/</guid>
+      <guid>http://www.dongpo.li/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/1/</guid>
       <description>&lt;p&gt;抄起键盘就是干.先看是怎么启动的.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>0、先达成一些共识</title>
-      <link>/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/0/</link>
+      <link>http://www.dongpo.li/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/0/</link>
       <pubDate>Mon, 12 Apr 2021 15:01:37 +0800</pubDate>
       
-      <guid>/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/0/</guid>
+      <guid>http://www.dongpo.li/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/0/</guid>
       <description>&lt;p&gt;dubbo毕竟是一个工程化的项目，还是比较复杂的，所以我们在这里达成一些共识，防止之后因为一些其他的问题导致理解上的误差，dubbo捐给Apache之后还是做了很多的改变的。&lt;/p&gt;</description>
     </item>
     
