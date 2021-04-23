@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>ExtensionLoader</title>
+      <link>/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/3/</link>
+      <pubDate>Thu, 15 Apr 2021 17:46:07 +0800</pubDate>
+      
+      <guid>/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/3/</guid>
+      <description>&lt;p&gt;dubbo提供扩展功能依赖的是自己实现的SPI机制,原理类似JDK的SPI.这次我们啃一下这块.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>1、启动(DubboBootstrap)</title>
       <link>/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/1/</link>
       <pubDate>Tue, 13 Apr 2021 15:01:05 +0800</pubDate>
