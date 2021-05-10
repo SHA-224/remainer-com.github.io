@@ -7,17 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>1、启动(DubboBootstrap) | SHA-1</title>
-    <meta property="og:title" content="1、启动(DubboBootstrap) - SHA-1">
+    <title>1、启动之前 | SHA-1</title>
+    <meta property="og:title" content="1、启动之前 - SHA-1">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content="2021-04-13T15:01:05&#43;08:00">
+    <meta property="article:published_time" content="2021-04-13T10:01:05&#43;08:00">
         
         
-    <meta property="article:modified_time" content="2021-04-13T15:01:05&#43;08:00">
+    <meta property="article:modified_time" content="2021-04-13T10:01:05&#43;08:00">
         
     <meta name="Keywords" content="">
-    <meta name="description" content="1、启动(DubboBootstrap)">
+    <meta name="description" content="1、启动之前">
         
     <meta name="author" content="">
     <meta property="og:url" content="/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/1/">
@@ -67,7 +67,7 @@
                 <div class="res-cons">
                     <article class="post">
                         <header>
-                            <h1 class="post-title">1、启动(DubboBootstrap)</h1>
+                            <h1 class="post-title">1、启动之前</h1>
                         </header>
                         <date class="post-meta meta-date">
                             2021年4月13日
@@ -76,55 +76,62 @@
                         
                         
                         <div class="post-content">
-                            <p>抄起键盘就是干.先看是怎么启动的.</p>
-<p>鉴于大多数人使用dubbo都是在spring环境下的,所以我们优先看依赖spring的dubbo是怎么启动的.</p>
-<h1 id="dubbobootstrapapplicationlistener">DubboBootstrapApplicationListener</h1>
-<p>既然是在基于spring,那么启动的引导就那几个花样,dubbo使用的是实现ApplicationListener接口的方式(注意是2.7.6,其他版本可能不一样).</p>
-<p>先看构造方法: 在DubboBootstrapApplicationListener的构造方法中,只做了一件事,就是初始化DubboBootstrap,调用的是DubboBootstrap.getInstance(),这个getInstance里是经典的两次判空实现单例,略过不谈.</p>
-<p>OneTimeExecutionApplicationContextEventListener实现了ApplicationListener,提供了抽象方法onApplicationContextEvent来处理spring的事件.</p>
-<p>DubboBootstrapApplicationListener是OneTimeExecutionApplicationContextEventListener的一个子类,onApplicationContextEvent的具体逻辑就是在这里实现的.</p>
-<h1 id="onapplicationcontextevent">onApplicationContextEvent</h1>
-<p>可以看到onApplicationContextEvent中处理了两种事件,ContextRefreshedEvent和ContextClosedEvent,分别对应onContextRefreshedEvent方法和onContextClosedEvent方法.</p>
-<p>onContextRefreshedEvent方法和onContextClosedEvent方法的具体逻辑也比较简单,就是调用了DubboBootstrap的start和stop方法.</p>
-<h1 id="dubbobootstrap">DubboBootstrap</h1>
-<p>上边说了半天,其实就是dubbo启动的引导,也就是调用dubbo的启动入口,DubboBootstrap才是真正的启动实现,真正复杂的也在这里边.</p>
-<p>还是先看构造方法,做了下边几件事:</p>
-<!-- ⓿ ❶ ❷ ❸ ❹ ❺ ❻ ❼ ❽ ❾ ❿⓫ ⓬ ⓭ ⓮ ⓯ ⓰ ⓱ ⓲ ⓳ ⓴ -->
-<ol>
-<li>初始化了一个 ConfigManager ❶</li>
-<li>初始化了一个 Environment ❷</li>
-<li>注册了一个DubboShutdownHook,shutdown的时候调用DubboBootstrap的destroy()方法</li>
-</ol>
-<h2 id="start">start()</h2>
-<p>上边说了,启动收到ContextRefreshedEvent事件的时候启动dubbo,启动就是执行这个方法,这才是dubbo启动的核心入口.</p>
-<p>这里边做了几件事:</p>
-<ol>
-<li>initialize(); 看起来像是初始化的一些逻辑,一会深究</li>
-<li>exportServices(); 看起来像是注册Provider的入口 ❸</li>
-<li>exportMetadataService(); registerServiceInstance();  2.7.8之后才有的逻辑,先跳过,不影响主逻辑</li>
-<li>referServices(); 看起来像是注入consumer的bean ❹</li>
-<li>awaitFinish(); 等待asyncExportingFutures初始化完成,这个看起来也不影响主逻辑的理解,先跳过吧.</li>
-</ol>
-<h2 id="initialize">initialize()</h2>
-<p>这里边做了几件事:</p>
-<ol>
-<li>ApplicationModel.initFrameworkExts(); 初始化所有FrameworkExt,其实就是SPI形式的Lifecycle</li>
-<li>startConfigCenter(); dubbo的配置中心模块,后续我们深入研究 ❺</li>
-<li>loadRemoteConfigs();</li>
-<li>checkGlobalConfigs();</li>
-<li>startMetadataCenter();</li>
-<li>initMetadataService();</li>
-<li>initMetadataServiceExports();</li>
-<li>initEventListener();</li>
-</ol>
-<p>至此其实dubbo启动的主逻辑就差不多了,剩下的就是丰富里边的细节了.</p>
-<h1 id="todo">TODO</h1>
-<p>留几个flag,后面一个一个啃</p>
-<p>❶ ConfigManager初始化的时候用到了Extension逻辑,其实就是dubbo的SPI机制,这块比较复杂之后详细研究<br>
-❷ 和❶一样<br>
-❸ Provider的注册逻辑,比较复杂后续展开说<br>
-❹ Consumer的注入逻辑,比较复杂后续展开说<br>
-❺ 看起来SPI机制了解了之后就得研究配置模块了</p>
+                            <p>鉴于大多数人使用dubbo都是在spring环境下的,所以我们优先看依赖spring的dubbo是怎么启动的.
+在了解dubbo真正开始启动之前,还有一些初始化的工作要做.</p>
+<p>我们从最原始的xml的配置方式看起,虽然现在这种方式随着springboot的兴起已经不是很常见了,但是还是会有不少企业或者遗留项目在使用,而且xml的配置方式算是原理级的了,了解总是没有坏处的.</p>
+<h1 id="开始之前">开始之前</h1>
+<p>在开始之前我们先看下我们的demo的一些重要配置.</p>
+<h2 id="pomxml">pom.xml</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;profiles&gt;</span>
+    <span style="color:#75715e">&lt;!-- For jdk 11 above JavaEE annotation --&gt;</span>
+    <span style="color:#f92672">&lt;profile&gt;</span>
+        <span style="color:#f92672">&lt;id&gt;</span>javax.annotation<span style="color:#f92672">&lt;/id&gt;</span>
+        <span style="color:#f92672">&lt;activation&gt;</span>
+            <span style="color:#f92672">&lt;jdk&gt;</span>[1.11,)<span style="color:#f92672">&lt;/jdk&gt;</span>
+        <span style="color:#f92672">&lt;/activation&gt;</span>
+        <span style="color:#f92672">&lt;dependencies&gt;</span>
+            <span style="color:#f92672">&lt;dependency&gt;</span>
+                <span style="color:#f92672">&lt;groupId&gt;</span>javax.annotation<span style="color:#f92672">&lt;/groupId&gt;</span>
+                <span style="color:#f92672">&lt;artifactId&gt;</span>javax.annotation-api<span style="color:#f92672">&lt;/artifactId&gt;</span>
+                <span style="color:#f92672">&lt;version&gt;</span>1.3.2<span style="color:#f92672">&lt;/version&gt;</span>
+            <span style="color:#f92672">&lt;/dependency&gt;</span>
+        <span style="color:#f92672">&lt;/dependencies&gt;</span>
+    <span style="color:#f92672">&lt;/profile&gt;</span>
+<span style="color:#f92672">&lt;/profiles&gt;</span>
+</code></pre></div><p>因为使用的是jdk11而jdk11移除 JavaEE 和 CORBA 模块，JavaFX 也已被移除,所以想要@PostConstruct注解生效需要添加上边的profile,否则启动失败.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">No application config found or it&#39;s not a valid config! Please add &lt;dubbo:application name=&#34;...&#34; /&gt; to your spring config.
+</code></pre></div><h2 id="springxml">spring.xml</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dubbo:application</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;dubbo-provider-sample&#34;</span><span style="color:#f92672">/&gt;</span>
+<span style="color:#75715e">&lt;!-- 使用multicast广播注册中心暴露服务地址 --&gt;</span>
+<span style="color:#f92672">&lt;dubbo:registry</span> <span style="color:#a6e22e">address=</span><span style="color:#e6db74">&#34;multicast://224.5.6.7:1234&#34;</span> <span style="color:#a6e22e">register=</span><span style="color:#e6db74">&#34;false&#34;</span><span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;dubbo:protocol</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;dubbo&#34;</span><span style="color:#f92672">/&gt;</span>
+
+<span style="color:#75715e">&lt;!-- 声明需要暴露的服务接口 --&gt;</span>
+<span style="color:#f92672">&lt;dubbo:service</span> <span style="color:#a6e22e">interface=</span><span style="color:#e6db74">&#34;li.dongpo.tc.SampleService&#34;</span>
+                <span style="color:#a6e22e">ref=</span><span style="color:#e6db74">&#34;sampleServiceImpl&#34;</span> <span style="color:#f92672">/&gt;</span>
+</code></pre></div><h1 id="dubbonamespacehandler">DubboNamespaceHandler</h1>
+<p>dubbo的配置有专用的标签&lt;dubbo&gt;,spring提供自定义标签的方式就是NamespaceHandler,通过实现NamespaceHandler接口的方式可以自定义标签.</p>
+<p>关于自定义标签的部分就不展开了,网上资料非常多,而且现在都是springboot了这种方式也不常见了.</p>
+<p>简单来说,DubboNamespaceHandler就是用来解析spring配置文件中&lt;dubbo:xxxx/&gt;这类标签的,每个dubbo标签根据xxxx的不同注入不同的bean,每行配置类似于springboot中的一个@Bean注解.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">registerBeanDefinitionParser<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;application&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> DubboBeanDefinitionParser<span style="color:#f92672">(</span>ApplicationConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">));</span>
+registerBeanDefinitionParser<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;module&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> DubboBeanDefinitionParser<span style="color:#f92672">(</span>ModuleConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">));</span>
+registerBeanDefinitionParser<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;registry&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> DubboBeanDefinitionParser<span style="color:#f92672">(</span>RegistryConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">));</span>
+registerBeanDefinitionParser<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;config-center&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> DubboBeanDefinitionParser<span style="color:#f92672">(</span>ConfigCenterBean<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">));</span>
+registerBeanDefinitionParser<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;metadata-report&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> DubboBeanDefinitionParser<span style="color:#f92672">(</span>MetadataReportConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">));</span>
+registerBeanDefinitionParser<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;monitor&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> DubboBeanDefinitionParser<span style="color:#f92672">(</span>MonitorConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">));</span>
+registerBeanDefinitionParser<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;metrics&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> DubboBeanDefinitionParser<span style="color:#f92672">(</span>MetricsConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">));</span>
+registerBeanDefinitionParser<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ssl&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> DubboBeanDefinitionParser<span style="color:#f92672">(</span>SslConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">));</span>
+registerBeanDefinitionParser<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;provider&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> DubboBeanDefinitionParser<span style="color:#f92672">(</span>ProviderConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">));</span>
+registerBeanDefinitionParser<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;consumer&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> DubboBeanDefinitionParser<span style="color:#f92672">(</span>ConsumerConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">));</span>
+registerBeanDefinitionParser<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;protocol&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> DubboBeanDefinitionParser<span style="color:#f92672">(</span>ProtocolConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">));</span>
+registerBeanDefinitionParser<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;service&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> DubboBeanDefinitionParser<span style="color:#f92672">(</span>ServiceBean<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">));</span>
+registerBeanDefinitionParser<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;reference&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> DubboBeanDefinitionParser<span style="color:#f92672">(</span>ReferenceBean<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">));</span>
+registerBeanDefinitionParser<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;annotation&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> AnnotationBeanDefinitionParser<span style="color:#f92672">());</span>
+</code></pre></div><p>关于这个配置可以参见 <a href="https://dubbo.apache.org/zh/blog/2018/08/14/dubbo-%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95-provider-%E9%85%8D%E7%BD%AE/" target="_blank">dubbo-基础用法-provider-配置</a></p>
+<p>所以xml中的配置 &lt;dubbo:application name=&quot;dubbo-provider-sample&rdquo;/&gt; 就开始生效了,注入了一个ApplicationConfig.
+需要注意的是ApplicationConfig是AbstractConfig的一个子类,而AbstractConfig中包含@PostConstruct注解,所以在注入的时候会执行ApplicationModel.getConfigManager().addConfig(this)
+下边的RegistryConfig也是一样的.</p>
+<p>ApplicationModel.getConfigManager()这行开始执行的时候,dubbo的扩展机制(ExtensionLoader)就开始初始化了. 这个扩展机制比较重要我们后续展开说.</p>
                         </div>
 
                         

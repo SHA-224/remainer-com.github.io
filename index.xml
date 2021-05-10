@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>2、ExtensionLoader</title>
+      <title>3、扩展机制(ExtensionLoader)</title>
       <link>/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/3/</link>
       <pubDate>Thu, 15 Apr 2021 17:46:07 +0800</pubDate>
       
@@ -21,12 +21,22 @@
     </item>
     
     <item>
-      <title>1、启动(DubboBootstrap)</title>
-      <link>/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/1/</link>
+      <title>2、启动(DubboBootstrap)</title>
+      <link>/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/2/</link>
       <pubDate>Tue, 13 Apr 2021 15:01:05 +0800</pubDate>
       
+      <guid>/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/2/</guid>
+      <description>&lt;p&gt;Spring IoC容器启动完成之后就应该开始dubbo的初始化工作了.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>1、启动之前</title>
+      <link>/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/1/</link>
+      <pubDate>Tue, 13 Apr 2021 10:01:05 +0800</pubDate>
+      
       <guid>/dubbo%E6%BA%90%E7%A0%81%E7%AC%94%E8%AE%B0/1/</guid>
-      <description>&lt;p&gt;抄起键盘就是干.先看是怎么启动的.&lt;/p&gt;</description>
+      <description>&lt;p&gt;鉴于大多数人使用dubbo都是在spring环境下的,所以我们优先看依赖spring的dubbo是怎么启动的.
+在了解dubbo真正开始启动之前,还有一些初始化的工作要做.&lt;/p&gt;</description>
     </item>
     
     <item>
